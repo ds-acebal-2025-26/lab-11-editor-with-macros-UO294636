@@ -21,7 +21,7 @@ public class Editor {
 	}
 	
 	public void insert(String[] wordToInsert) {
-		if (macroControlling.getMacro() == null) {
+		if (macroControlling.getMacro() != null) {
 			macroControlling.add(new InsertWord(this, wordToInsert));
 		}
 		for (String word : wordToInsert) {
@@ -30,7 +30,7 @@ public class Editor {
 	}
 	
 	public void delete() {
-		if (macroControlling.getMacro() == null) {
+		if (macroControlling.getMacro() != null) {
 			macroControlling.add(new Remove(this));
 		}
 		int indexOfLastWord = text.toString().trim().lastIndexOf(" ");
@@ -40,7 +40,7 @@ public class Editor {
 			text.setLength(indexOfLastWord);
 	}
 	public void replace(String[] args) {
-		if (macroControlling.getMacro() == null) {
+		if (macroControlling.getMacro() != null) {
 			macroControlling.add(new Replace(this, args));
 		}
 		if (!checkArguments(args, 2, "replace <find> <replace>"))
